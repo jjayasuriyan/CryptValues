@@ -1,0 +1,77 @@
+<!-- Generated template for the RatesListComponent component -->
+<div>
+   <div *ngIf="rates"> 
+            <ion-row>
+                <ion-col align-self-center >
+                    <div *ngIf="!expand" class="search-buttton">
+                        <ion-icon name="search" (click)="expandSearch($event)"></ion-icon> 
+                    </div>
+                    <div *ngIf="expand"> 
+                        <ion-searchbar  fixed class="search_bar" [(ngModel)]="searchTerm" [showCancelButton]="shouldShowCancel" (ionInput)="setFilteredItems($event)">
+                            </ion-searchbar>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+      <ion-card class="card" *ngFor="let rate of rates">
+      <ion-card-content>  
+        <ion-row>
+          <ion-col align-self-center> 
+              <p ion-text color="heading" class="heading">{{rate.name}}</p>
+              <p ion-text color="sub-heading" class="sub-heading">{{rate.symbol}}</p>      
+          </ion-col>
+          <ion-col  align-self-center>
+               <span class="rate">{{rate.quotes.USD.price | number:4.0-4}}</span>
+              <span>USD</span>
+          </ion-col> 
+        </ion-row>
+            <ion-row class="changes">
+                <ion-col>
+                      <span>1h:</span>
+                      <span>{{rate.quotes.USD.percent_change_1h}}</span>
+                      <span *ngIf="rate.quotes.USD.percent_change_1h >=0">
+                      <ion-icon name="arrow-up"  color="secondary"></ion-icon>
+                      </span>
+                      <span *ngIf="rate.quotes.USD.percent_change_1h <=0">
+                      <ion-icon name="arrow-down" color="danger"></ion-icon>
+                      </span>
+
+                </ion-col>
+                <ion-col>
+                  
+                      <span>24h:</span>
+                      <span>{{rate.quotes.USD.percent_change_24h}}</span>
+                      <span *ngIf="rate.quotes.USD.percent_change_24h >=0">
+                            <ion-icon name="arrow-up"  color="secondary"></ion-icon>
+                            </span>
+                            <span *ngIf="rate.quotes.USD.percent_change_24h <=0">
+                            <ion-icon name="arrow-down" color="danger"></ion-icon>
+                            </span>
+                </ion-col>
+                <ion-col>
+                  
+                        <span>7d:</span>
+                        <span>{{rate.quotes.USD.percent_change_7d}}</span>
+                        <span *ngIf="rate.quotes.USD.percent_change_7d >=0">
+                                <ion-icon name="arrow-up"  color="secondary"></ion-icon>
+                                </span>
+                                <span *ngIf="rate.quotes.USD.percent_change_7d <=0">
+                                <ion-icon name="arrow-down" color="danger"></ion-icon>
+                                </span>
+                   
+                </ion-col>
+            </ion-row>
+          <ion-row class="supplies">
+            <ion-col align-self-center>
+                <span>Circulating:</span>
+                <span>{{rate.circulating_supply}}</span>
+            </ion-col>
+            <ion-col align-self-center>
+                <span>Total:</span>
+                <span>{{rate.total_supply}}</span>
+            </ion-col>
+          </ion-row>
+      </ion-card-content>        
+      </ion-card>
+    </div>
+</div>

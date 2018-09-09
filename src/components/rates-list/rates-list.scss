@@ -1,0 +1,53 @@
+rates-list {
+    .search-buttton{
+        padding-right:10px; 
+        float:right;
+        font-size: 15px;
+    }
+    .ion-col{
+        padding: 0;
+    }
+    .search_bar{
+        padding:0 10px 0 10px;
+    }
+    .card { 
+        border-radius : 5px; 
+        ion-col{
+            padding: 0;
+            p{
+                text-align: center;
+            }
+        }
+    }
+    .refresh-btn{
+        position:absolute;
+        top:3px;
+        right:30px;
+        cursor: pointer;
+     }
+     .card-content{
+         margin: 0;
+         padding: 3px 10px;
+     }
+     .heading{
+         font-weight: bold;
+         font-size: 20px
+     }
+     .rate{
+         font-weight: bolder;
+         font-size: 25px;
+     }
+     .supplies{
+        font-size: 10px;
+        ion-col{   
+            text-align: center;
+         }
+     }
+
+     .changes{
+        ion-col{   
+            text-align: center;
+         }
+     }
+     
+}
