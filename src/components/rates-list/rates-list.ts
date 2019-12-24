@@ -19,7 +19,6 @@ export class RatesListComponent {
   constructor(private alertCtrl: AlertController,
     public restProvider: RestProvider) { 
       this.getRates() ;
-      console.log(this.rates);
   }
 
   getRates() {
@@ -27,11 +26,9 @@ export class RatesListComponent {
     this.restProvider.getRates()
     .then(data => {
       this.temp = data;
-      console.log(this.temp);
       for(let data in this.temp.data){
         this.rates.push(this.temp.data[data]);
       }
-      console.log(this.rates);
     });
   }
 
@@ -45,14 +42,16 @@ export class RatesListComponent {
   }
 
 setFilteredItems(ev:any){
-  this.getRates();
   const val = ev.target.value;
-
+  let filteredRates=[];
   if (val && val.trim() != '') {
-    this.rates = this.rates.filter((item) => {
-      console.log('item',item);
-      return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        filteredRates = this.rates.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
     })
+    this.rates = filteredRates;
+  } else{
+    this.rates = [];
+    this.getRates();
   }
 }
 
